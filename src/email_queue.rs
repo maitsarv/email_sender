@@ -139,6 +139,7 @@ fn build_mailer(from_email: (&str, &str, &str)) -> SmtpTransport {
         .connection_reuse(ConnectionReuseParameters::ReuseUnlimited)
         // Enable SMTPUTF8 if the server supports it
         .smtp_utf8(true)
+        .timeout(Some(core::time::Duration::new(12, 0)))
         .transport();
     return mailer;
 }
